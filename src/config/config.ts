@@ -4,7 +4,7 @@ config();
 // Setup Application Config
 const _appConfig = {
     port: process.env.PORT,
-    debug: process.env.debug,
+    debug: process.env.DEBUG,
 
     // DB 
     db: {
@@ -24,7 +24,7 @@ const _appConfig = {
         accountID: process.env.CLOUDFLARE_ACCOUNT_ID,
         r2AccessKeyID: process.env.R2_ACCESS_KEY_ID,
         r2SecretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
-        r2VideoBucketName: process.env.R2_VIDEO_BUCKET_NAME,
+        r2BucketName: process.env.R2_BUCKET_NAME,
         r2PublicUrl: process.env.R2_PUBLIC_URL,
     },
 
