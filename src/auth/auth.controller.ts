@@ -158,6 +158,7 @@ const authController: Handler = async (c: Context) => {
             ), 201);
 
         } catch (error) {
+            console.error('Employee signup error:', error);
             return c.json(buildResponse(
                 false,
                 'something went wrong on our end!',
