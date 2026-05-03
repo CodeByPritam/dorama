@@ -7,11 +7,7 @@ const baseAccountColumns = {
 
     // Persons: Identity
     name:        text('name').notNull(),
-    avatar_url:  text('avatar_url'),
-
-    // Persons :: Info
     username:    text('username').notNull().unique(),
-    phoneno:     text('phoneno').unique(),
     email:       text('email').notNull().unique(),
 
     // Persons :: password
@@ -30,6 +26,8 @@ const baseAccountColumns = {
 // Create Employee Table Schema
 const employees = pgTable('employees', {
     ...baseAccountColumns,
+    avatar_url: text('avatar_url').notNull(),
+    phoneno: text('phoneno').notNull().unique(),
     role: text('role').notNull(),
     permissions: text('permissions').array().notNull().default([]),
 });
@@ -37,6 +35,8 @@ const employees = pgTable('employees', {
 // Create User Table Schema
 const users = pgTable('users', {
     ...baseAccountColumns,
+    avatar_url: text('avatar_url'),
+    phoneno: text('phoneno').unique(),
     is_premium: boolean('is_premium').notNull().default(false),
 });
 

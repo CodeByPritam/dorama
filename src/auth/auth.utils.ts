@@ -3,8 +3,8 @@ import { PutObjectCommand } from '@aws-sdk/client-s3';
 import _appConfig from '../config/config.js';
 import jwt from 'jsonwebtoken';
 
-// Generate Unique _Secret
-const generateUniqueSecret = (len: number = 8): string => {
+// Generate :: Unique _Secret
+const uniqueSecret = (len: number = 8): string => {
     const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -17,9 +17,9 @@ const generateUniqueSecret = (len: number = 8): string => {
 };
 
 // Upload Avatar to R2
-const uploadAvatartoR2 = async (file: File, secretKey: string): Promise<string> => {
+const uploadAvatar = async (file: File, uuid: string): Promise<string> => {
     const ext = file.type.split('/')[1];
-    const key = `images/avatars/${secretKey}.${ext}`;
+    const key = `images/avatars/${uuid}.${ext}`;
     const buffer = Buffer.from(await file.arrayBuffer());
 
     // Start client
@@ -43,8 +43,8 @@ const validateAvatar = (file: File): string | null => {
     return null;
 };
 
-// Generate Sign Token
-const generateSignToken = (_idx: number, role: string) => {
+// Generate :: Sign Token
+const signToken = (_idx: number, role: string) => {
     const jwtConf = _appConfig.jwt;
 
     // Make access token : during login it use once
@@ -66,4 +66,4 @@ const generateSignToken = (_idx: number, role: string) => {
 };
 
 // Export
-export { generateUniqueSecret, uploadAvatartoR2, validateAvatar, generateSignToken };
+export { uniqueSecret, uploadAvatar, validateAvatar, signToken };
