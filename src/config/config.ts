@@ -4,6 +4,7 @@ config();
 // Setup Application Config
 const _appConfig = {
     port: process.env.PORT,
+    environment: process.env.NODE_ENV,
     debug: process.env.DEBUG,
 
     // DB 
