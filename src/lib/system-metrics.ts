@@ -170,8 +170,8 @@ const SYS_SAFE_USAGE_THRESHOLDS = {
     }
 };
 
-// Export ({ generateHealthReport :: v1 })
-export async function generateHealthReport(): Promise<HealthReport> {
+// Export ({ GenerateHealthReport :: v1 })
+export async function GenerateHealthReport(): Promise<HealthReport> {
     const [cpu, disk] = await Promise.all([getCpuUsage(), getDiskInfo()]);
     const memory = getMemoryInfo();
     const system = getSystemInfo();
