@@ -4,7 +4,7 @@ import env from './src/config/env.js';
 
 // Application :: Bootloader
 const initServer = () => {
-    const port = Number(env.port) ?? 8080;
+    const port = Number(env.port) || 8080;
 
     // Default :: Home route
     app.get('/', (c) => {
