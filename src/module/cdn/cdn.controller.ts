@@ -12,8 +12,8 @@ const CdnController: Handler = async (c: Context) => {
 
         // OnType Logic
         let height, width;
-        if (type === 'poster') { width = 440, height = 660 }
-        if (type === 'banner') { width = 1000, height = 563 }
+        if (type === 'poster') { width = 600, height = 900 }
+        if (type === 'banner') { width = 1920, height = 1080 }
 
         // Construct, Parse URL
         const parsed = new URL(`https://media.themoviedb.org/t/p/w${width}_and_h${height}_face/${backdropUrl}`);
