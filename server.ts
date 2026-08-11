@@ -1,16 +1,15 @@
 import { serve } from '@hono/node-server';
 import app from './src/app.js';
+import env from './src/config/env.js';
 
 // Application :: Bootloader
 const initServer = () => {
-    const environment = 'development';
-    const appurl = `https://dorama.dev`;
-    const port = 8080;
+    const port = Number(env.port) ?? 8080;
 
     // Default :: Home route
     app.get('/', (c) => {
         return c.json({
-            message: 'Welcome to Dorama API',
+            message: 'Welcome to Dorama API...',
             timestamp: new Date().toISOString(),
         }, 200);
     });
@@ -18,9 +17,9 @@ const initServer = () => {
     // Listen to the server
     serve({ fetch: app.fetch, port: port }, (info) => {
         console.log(`Server is running on: ${
-            environment === "development"
+            env.environment !== "production"
             ? `http://localhost:${info.port}`
-            : `${appurl}`
+            : `${env.url}`
         }`);
     });
 

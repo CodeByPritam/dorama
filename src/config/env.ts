@@ -7,6 +7,18 @@ const env = {
     port: process.env.PORT,
     environment: process.env.NODE_ENV,
 
+    // CMS :: Super Admin
+    user: {
+        name: 'Pritam Adak',
+        username: 'CodeByPritam',
+        email: 'hello@pritamadak.com',
+        phno: '+91 1234567890',
+        password: 'KissKH@2023',
+        permalink: '/super-admin/pritam-adak',
+        role: 'super-admin',
+        is_verified: true,
+    },
+
     // Database
     db: {
         supabase: {
